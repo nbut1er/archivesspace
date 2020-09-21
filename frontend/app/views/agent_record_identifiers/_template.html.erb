@@ -55,6 +55,8 @@
   <%= form.label_and_readonly "source_enum" %>
   <%= form.label_and_readonly "identifier_type_enum" %>
 
-  <%= form.hidden_input "id", form.obj["id"] %>
+  <% if form.obj["uri"] %>
+    <%= form.hidden_input "id", JSONModel(:agent_record_identifier).id_for(form.obj["uri"]) %>
+  <% end %>
 
 <% end %>

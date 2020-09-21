@@ -58,7 +58,10 @@
       <%= form.label_and_readonly "date_certainty" %>
       <%= form.label_and_readonly "date_era" %>
       <%= form.label_and_readonly "date_calendar" %>
-      <%= form.hidden_input "id", form.obj["id"] %>
+
+      <% if form.obj["uri"] %>
+        <%= form.hidden_input "id", JSONModel(:structured_date_label).id_for(form.obj["uri"]) %>
+      <% end %>
 
       <% ranged_dates = [form["structured_date_range"]].compact %>
       <% single_dates = [form["structured_date_single"]].compact %>

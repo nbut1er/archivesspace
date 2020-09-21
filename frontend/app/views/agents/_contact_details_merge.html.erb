@@ -8,7 +8,10 @@
 
     <%= form.record_level_merge_controls(form, "agent_contact", true, !disable_replace) %>
 
-    <%= form.hidden_input "id", form.obj["id"] %>
+
+    <% if form.obj["uri"] %>
+      <%= form.hidden_input "id", JSONModel(:agent_contact).id_for(form.obj["uri"]) %>
+    <% end %>
 
     <%= form.label_and_merge_select("name", "", {:disable_replace => disable_replace}) %>
     <%= form.label_and_merge_select("salutation", "", {:disable_replace => disable_replace}) %>

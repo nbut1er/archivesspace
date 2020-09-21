@@ -41,5 +41,8 @@
   <%= form.label_and_readonly "maintenance_agency" %>
   <%= form.label_and_readonly "agency_code_type_enum" %>
 
-  <%= form.hidden_input "id", form.obj["id"] %>
+
+  <% if form.obj["uri"] %>
+    <%= form.hidden_input "id", JSONModel(:agent_other_agency_codes).id_for(form.obj["uri"]) %>
+  <% end %>
 <% end %>

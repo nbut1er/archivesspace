@@ -10,7 +10,10 @@
 
     <%= render_aspace_partial :partial => "agents/name_forms/authority_fields_merge", :locals => {:form => form} %>
 
-    <%= form.hidden_input "id", form.obj["id"] %>
+
+    <% if form.obj["uri"] %>
+      <%= form.hidden_input "id", JSONModel(:name_person).id_for(form.obj["uri"]) %>
+    <% end %>
 
     <%= form.label_and_merge_select("name_order", "", {:disable_replace => disable_replace}) %>
     <%= form.label_and_merge_select("prefix", "", {:disable_replace => disable_replace}) %>

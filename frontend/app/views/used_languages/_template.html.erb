@@ -44,7 +44,10 @@
   <% disable_replace = false %>
 
   <%= form.record_level_merge_controls(form, "used_language", true, !disable_replace) %>
-  <%= form.hidden_input "id", form.obj["id"] %>
+
+  <% if form.obj["uri"] %>
+    <%= form.hidden_input "id", JSONModel(:used_language).id_for(form.obj["uri"]) %>
+  <% end %>
  
   <% field_names = ["language", "script"] %>
   <% field_names.each do |field_name| %>

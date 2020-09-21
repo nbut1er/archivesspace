@@ -36,7 +36,11 @@
   <% disable_replace = false %>
 
   <%= form.record_level_merge_controls(form, "agent_function", true, !disable_replace) %>
-  <%= form.hidden_input "id", form.obj["id"] %>
+
+
+  <% if form.obj["uri"] %>
+    <%= form.hidden_input "id", JSONModel(:agent_function).id_for(form.obj["uri"]) %>
+  <% end %>
  
   <%= render_aspace_partial :partial => "subjects/show_inline", :locals => {:subjects => form.obj['subjects'], :section_id => "victim_function_subjects_", :section_title => I18n.t("agent_function.subjects"), :heading_size => "h4"} %>
 

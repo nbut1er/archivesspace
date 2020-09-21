@@ -78,6 +78,8 @@
   <%= form.label_and_merge_select("xlink_arcrole_attribute", "", {:disable_replace => disable_replace}) %>
   <%= form.label_and_merge_select("last_verified_date", "", {:disable_replace => disable_replace}) %>
 
-  <%= form.hidden_input "id", form.obj["id"] %>
+  <% if form.obj["uri"] %>
+    <%= form.hidden_input "id", JSONModel(:agent_alternate_set).id_for(form.obj["uri"]) %>
+  <% end %>
 
 <% end %>
