@@ -179,6 +179,7 @@ curl -H 'Content-Type: application/json' \\
         rescue => e
           STDERR.puts "EXCEPTION!"
           STDERR.puts e.message
+          STDERR.puts e.backtrace
         end
       end
 
@@ -353,7 +354,7 @@ curl -H 'Content-Type: application/json' \\
   rescue => e
     STDERR.puts "EXCEPTION!"
     STDERR.puts e.inspect
-
+    STDERR.puts e.backtrace
   end
 
   # do field replace operations
@@ -405,13 +406,14 @@ curl -H 'Content-Type: application/json' \\
   def find_subrec_index_in_victim(victim, subrec_name, subrec_id)
     ind = nil
     victim[subrec_name].each_with_index do |subrec, i|
-      if subrec["id"] == subrec_id
+      record_id = JSONModel(subrec["jsonmodel_type"].to_sym).id_for(subrec["uri"])
+      if record_id == subrec_id
         ind = i
         break
       end
     end
 
-    return ind
+    return ind ? ind : -1
   end
 
   # before we can merge a subrecord, we need to update the IDs, tweak things to prevent validation issues, etc
