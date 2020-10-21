@@ -3,10 +3,8 @@
     "$schema" => "http://www.archivesspace.org/archivesspace.json",
     "version" => 1,
     "type" => "object",
-    "uri" => "agent_occupations",
 
     "properties" => {
-      "uri"          => {"type" => "string", "required" => false},
       "notes" => {
         "type" => "array",
         "items" => {"type" => [{"type" => "JSONModel(:note_text) object"},

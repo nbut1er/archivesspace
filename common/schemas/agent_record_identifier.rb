@@ -3,10 +3,8 @@
     "$schema" => "http://www.archivesspace.org/archivesspace.json",
     "version" => 1,
     "type" => "object",
-    "uri" => "agent_record_identifiers",
 
     "properties" => {
-      "uri"          => {"type" => "string", "required" => false},
       "primary_identifier" => {"type" => "boolean", "ifmissing" => "error"},
       "record_identifier" => {
         "type" => "string", 

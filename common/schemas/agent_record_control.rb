@@ -3,10 +3,8 @@
     "$schema" => "http://www.archivesspace.org/archivesspace.json",
     "version" => 1,
     "type" => "object",
-    "uri" => "agent_record_controls",
 
     "properties" => {
-      "uri"          => {"type" => "string", "required" => false},
       "maintenance_status_enum" => {
         "type" => "string",
         "dynamic_enum" => "maintenance_status_enum",

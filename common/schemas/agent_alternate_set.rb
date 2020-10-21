@@ -3,10 +3,8 @@
     "$schema" => "http://www.archivesspace.org/archivesspace.json",
     "version" => 1,
     "type" => "object",
-    "uri" => "agent_alternate_sets",
 
     "properties" => {
-      "uri"          => {"type" => "string", "required" => false},
       "set_component" => {"type" => "string", "maxLength" => 65000},
       "descriptive_note" => {"type" => "string", "maxLength" => 65000},
       "file_uri" => {"type" => "string", "maxLength" => 65000},

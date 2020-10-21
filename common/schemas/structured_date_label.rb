@@ -3,10 +3,8 @@
     "$schema" => "http://www.archivesspace.org/archivesspace.json",
     "version" => 1,
     "type" => "object",
-    "uri" => "structured_date_labels",
 
     "properties" => {
-      "uri"          => {"type" => "string", "required" => false},
       "date_label" => {"type" => "string", "dynamic_enum" => "date_label", "ifmissing" => "error"},
       "date_type_enum" => {"type" => "string", "dynamic_enum" => "date_type_enum", "ifmissing" => "error"},
       "structured_date_single" => {"required" => false, "type" => "JSONModel(:structured_date_single) object"},

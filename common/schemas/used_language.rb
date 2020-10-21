@@ -3,10 +3,8 @@
     "$schema" => "http://www.archivesspace.org/archivesspace.json",
     "version" => 1,
     "type" => "object",
-    "uri" => "used_languages",
 
     "properties" => {
-      "uri"          => {"type" => "string", "required" => false},
       "language" => {
         "type" => "string", 
         "dynamic_enum" => "language_iso639_2", 
