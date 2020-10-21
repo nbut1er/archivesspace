@@ -71,7 +71,7 @@ class EACSerializer < ASpaceExport::Serializer
         if filled_out?([arc["maintenance_agency"], arc["agency_name"], arc["maintenance_agency_note"]])
 
           xml.maintenanceAgency {
-            create_node(xml, "agencyCode", {}, arc["maintenance_agency"])
+            create_node(xml, "agencyCode", {}, arc["maintenance_agency"]) if AppConfig[:export_eac_agency_code]
             create_node(xml, "agencyName", {}, arc["agency_name"])
             create_node(xml, "descriptiveNote", {}, arc["maintenance_agency_note"])
           }

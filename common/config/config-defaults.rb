@@ -675,3 +675,6 @@ AppConfig[:hide_do_load] = false
 AppConfig[:bulk_import_rows] = 1000
 # maximum size (in KiloBytes) for an excel spreadsheet
 AppConfig[:bulk_import_size] = 256
+
+# For Agents Export
+AppConfig[:export_eac_agency_code] = false
