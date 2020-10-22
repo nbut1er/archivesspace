@@ -137,7 +137,7 @@ describe 'EAC converter' do
     end
 
     it "imports agent_maintenance_history tags" do
-      record = convert(person_agent_3).select {|r| r['jsonmodel_type'] == "agent_person"}.first
+      record = convert(person_agent_3, true).select {|r| r['jsonmodel_type'] == "agent_person"}.first
 
       mh = record["agent_maintenance_histories"].first
 
@@ -148,6 +148,12 @@ describe 'EAC converter' do
       expect(mh["agent"]).to eq("W4")
       expect(mh["event_date"]).to eq("1988-07-01")
       expect(mh["descriptive_note"]).to eq("Event note 1")
+    end
+
+    it "does not import agent_maintenance_history tags if option is not set" do
+      record = convert(person_agent_3, false).select {|r| r['jsonmodel_type'] == "agent_person"}.first
+
+      expect(record["agent_maintenance_histories"].length).to eq(0)
     end
 
     it "imports agent_source tags" do

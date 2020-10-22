@@ -19,6 +19,7 @@ describe 'EAC Export' do
     it "agent_record_control to control tags" do
       r = create(:json_agent_person_full_subrec)
       arc = r["agent_record_controls"].first
+      AppConfig[:export_eac_agency_code] = true
 
       eac = get_eac(r)
 
@@ -29,6 +30,16 @@ describe 'EAC Export' do
       expect(eac).to have_tag "control/maintenanceAgency/descriptiveNote" => arc['maintenance_agency_note']
       expect(eac).to have_tag "control/languageDeclaration/language" => arc['language']
       expect(eac).to have_tag "control/languageDeclaration/descriptiveNote" => arc['language_note']
+    end
+
+    it "does not export agency_code in agent_record_controls if config option not set" do
+      r = create(:json_agent_person_full_subrec)
+      arc = r["agent_record_controls"].first
+      AppConfig[:export_eac_agency_code] = false
+
+      eac = get_eac(r)
+
+      expect(eac).to_not have_tag "control/maintenanceAgency/agencyCode"
     end
 
     it "agent_conventions_dec to conventionDeclaration tag" do
